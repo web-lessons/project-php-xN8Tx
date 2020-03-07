@@ -1,65 +1,10 @@
 <?php 
 require_once "config/db.php";
 require_once "all/header.php";
-$products = array(
-    0 => array(
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "descriptions" => "Описание товара",
-        "url" => "#",
-    ),
-    1 => array(
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "descriptions" => "Описание товара",
-        "url" => "#",
-    ),
-    2 => array(
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "descriptions" => "Описание товара",
-        "url" => "#",
-    ),
-    3 => array(
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "descriptions" => "Описание товара",
-        "url" => "#",
-    ),
-    4 => array(
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "descriptions" => "Описание товара",
-        "url" => "#",
-    ),
-    5 => array(
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "descriptions" => "Описание товара",
-        "url" => "#",
-    ),   
-    6 => array(
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "descriptions" => "Описание товара",
-        "url" => "#",
-    ),
-    7 => array(
-        "name" => "Товар 1",
-        "img" => "/img/product1.jpg",
-        "descriptions" => "Описание товара",
-        "url" => "#",
-    ),
-    8 => array(
-        "name" => "Товар 1",
-        "img" => "/img product1.jpg",
-        "descriptions" => "Описание товара",
-        "url" => "#",
-    ),
-)
 $query = "SELECT * from `products`";
-$mysql = mysqli_query($mysqli, $query)
-var_dump($result);
+$mysql = mysqli_query($mysqli, $query);
+$products = mysqli_fetch_all($mysql, MYSQLI_ASSOC);
+
 ?>
 <div class="container">
     <section class="mt-4">
@@ -122,13 +67,15 @@ var_dump($result);
     </section>
     <section class="mt-4">
         <div class="row mb-3">
+         <? $j = 1 ?>
          <? foreach ($products as $key => $product): ?>
-            <div class="col-md-3">
+          <div class="col-md-3">
                 <div class="card">
                     <img src="<?=$product['img'] ?>" class="card-img-top" alt="">
                     <div class="card-body">
                         <h5 class="card-title"><?=$product['name'] ?></h5>
-                        <p class="card-text"><?=$product['descriptions'] ?></p>
+                        <p class="card-text"><?=$product['description'] ?></p>
+                        <p class="card-text"><?=$product['price'] ?></p>
                         <a href="#" class="btn btn-primary">В корзину</a>
                     </div>
                 </div>

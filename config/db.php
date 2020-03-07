@@ -2,9 +2,9 @@
 $host = "127.0.0.1";
 $login = "root";
 $password = "";
-$database = "ggg";
+$database = "shop";
 
-$mysqli = mysqli_connect($host, $login, $password);
+$mysqli = mysqli_connect($host, $login, $password, $database);
 
 if($mysqli->connect_error){
     die("DB error");
